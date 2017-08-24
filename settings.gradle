@@ -1,0 +1,1 @@
+include ':app', ':pulltorefresh', ':rxjava', ':all_app', ':showpic'
