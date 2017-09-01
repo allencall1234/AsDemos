@@ -43,7 +43,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 152
+    .line 153
     new-instance v1, Landroid/app/Dialog;
 
     const v2, 0x7f0900cf
@@ -52,17 +52,17 @@
 
     iput-object v1, p0, Lcom/zlt/icode/LoginActivity_CF;->mDialog:Landroid/app/Dialog;
 
-    .line 153
+    .line 154
     iget-object v1, p0, Lcom/zlt/icode/LoginActivity_CF;->mDialog:Landroid/app/Dialog;
 
     invoke-virtual {v1, v3}, Landroid/app/Dialog;->setCanceledOnTouchOutside(Z)V
 
-    .line 154
+    .line 155
     iget-object v1, p0, Lcom/zlt/icode/LoginActivity_CF;->mDialog:Landroid/app/Dialog;
 
     invoke-virtual {v1, v3}, Landroid/app/Dialog;->setCancelable(Z)V
 
-    .line 156
+    .line 157
     invoke-static {p0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v1
@@ -75,7 +75,7 @@
 
     move-result-object v0
 
-    .line 158
+    .line 159
     .local v0, "dialogView":Landroid/view/View;
     const v1, 0x7f0c0069
 
@@ -85,7 +85,7 @@
 
     invoke-virtual {v1, p0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 159
+    .line 160
     const v1, 0x7f0c006a
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -94,7 +94,7 @@
 
     invoke-virtual {v1, p0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 161
+    .line 162
     const v1, 0x7f0c0067
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -105,7 +105,7 @@
 
     iput-object v1, p0, Lcom/zlt/icode/LoginActivity_CF;->passEditText:Landroid/widget/EditText;
 
-    .line 162
+    .line 163
     const v1, 0x7f0c0068
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -116,24 +116,24 @@
 
     iput-object v1, p0, Lcom/zlt/icode/LoginActivity_CF;->remenberBox:Landroid/widget/CheckBox;
 
-    .line 163
+    .line 164
     iget-object v1, p0, Lcom/zlt/icode/LoginActivity_CF;->remenberBox:Landroid/widget/CheckBox;
 
     const/16 v2, 0x8
 
     invoke-virtual {v1, v2}, Landroid/widget/CheckBox;->setVisibility(I)V
 
-    .line 164
+    .line 165
     iget-object v1, p0, Lcom/zlt/icode/LoginActivity_CF;->mDialog:Landroid/app/Dialog;
 
     invoke-virtual {v1, v0}, Landroid/app/Dialog;->setContentView(Landroid/view/View;)V
 
-    .line 165
+    .line 166
     iget-object v1, p0, Lcom/zlt/icode/LoginActivity_CF;->mDialog:Landroid/app/Dialog;
 
     invoke-virtual {v1}, Landroid/app/Dialog;->show()V
 
-    .line 166
+    .line 167
     return-void
 .end method
 
@@ -142,34 +142,36 @@
 .method public onClick(Landroid/view/View;)V
     .locals 6
     .param p1, "view"    # Landroid/view/View;
-    .annotation runtime Lcom/alipay/euler/andfix/annotation/MethodReplace;
-        method = "onClick"
-        clazz = "com.zlt.icode.LoginActivity"
-    .end annotation
 
     .prologue
-    .line 70
+    .line 71
     invoke-virtual {p1}, Landroid/view/View;->getId()I
 
     move-result v3
 
     packed-switch v3, :pswitch_data_0
 
-    .line 100
+    .line 101
     :pswitch_0
     invoke-virtual {p0}, Lcom/zlt/icode/LoginActivity_CF;->finish()V
 
-    .line 103
+    .line 104
     :goto_0
     return-void
 
     .line 73
     :pswitch_1
-    invoke-virtual {p0}, Lcom/zlt/icode/LoginActivity_CF;->finish()V
+    new-instance v3, Landroid/content/Intent;
+
+    const-class v4, Lcom/zlt/icode/AccountActivity;
+
+    invoke-direct {v3, p0, v4}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    invoke-virtual {p0, v3}, Lcom/zlt/icode/LoginActivity_CF;->startActivity(Landroid/content/Intent;)V
 
     goto :goto_0
 
-    .line 76
+    .line 77
     :pswitch_2
     new-instance v3, Landroid/content/Intent;
 
@@ -181,7 +183,7 @@
 
     goto :goto_0
 
-    .line 79
+    .line 80
     :pswitch_3
     new-instance v0, Landroid/content/Intent;
 
@@ -189,7 +191,7 @@
 
     invoke-direct {v0, p0, v3}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    .line 80
+    .line 81
     .local v0, "intent":Landroid/content/Intent;
     const-string v3, "type"
 
@@ -197,12 +199,12 @@
 
     invoke-virtual {v0, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 81
+    .line 82
     invoke-virtual {p0, v0}, Lcom/zlt/icode/LoginActivity_CF;->startActivity(Landroid/content/Intent;)V
 
     goto :goto_0
 
-    .line 84
+    .line 85
     .end local v0    # "intent":Landroid/content/Intent;
     :pswitch_4
     iget-object v3, p0, Lcom/zlt/icode/LoginActivity_CF;->mDialog:Landroid/app/Dialog;
@@ -211,7 +213,7 @@
 
     goto :goto_0
 
-    .line 88
+    .line 89
     :pswitch_5
     iget-object v3, p0, Lcom/zlt/icode/LoginActivity_CF;->sharedPreferences:Landroid/content/SharedPreferences;
 
@@ -223,7 +225,7 @@
 
     move-result-object v2
 
-    .line 90
+    .line 91
     .local v2, "password":Ljava/lang/String;
     iget-object v3, p0, Lcom/zlt/icode/LoginActivity_CF;->passEditText:Landroid/widget/EditText;
 
@@ -241,19 +243,19 @@
 
     if-eqz v3, :cond_0
 
-    .line 91
+    .line 92
     iget-object v3, p0, Lcom/zlt/icode/LoginActivity_CF;->mDialog:Landroid/app/Dialog;
 
     invoke-virtual {v3}, Landroid/app/Dialog;->dismiss()V
 
-    .line 92
+    .line 93
     new-instance v1, Landroid/content/Intent;
 
     const-class v3, Lcom/zlt/icode/AccountActivity;
 
     invoke-direct {v1, p0, v3}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    .line 93
+    .line 94
     .local v1, "intent2":Landroid/content/Intent;
     const-string v3, "changeUserInfo"
 
@@ -261,12 +263,12 @@
 
     invoke-virtual {v1, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 94
+    .line 95
     invoke-virtual {p0, v1}, Lcom/zlt/icode/LoginActivity_CF;->startActivity(Landroid/content/Intent;)V
 
     goto :goto_0
 
-    .line 96
+    .line 97
     .end local v1    # "intent2":Landroid/content/Intent;
     :cond_0
     const-string v3, "\u5bc6\u7801\u9519\u8bef"
@@ -275,7 +277,9 @@
 
     goto :goto_0
 
-    .line 70
+    .line 71
+    nop
+
     :pswitch_data_0
     .packed-switch 0x7f0c0069
         :pswitch_4
@@ -292,8 +296,12 @@
 .end method
 
 .method protected onCreate(Landroid/os/Bundle;)V
-    .locals 1
+    .locals 2
     .param p1, "savedInstanceState"    # Landroid/os/Bundle;
+    .annotation runtime Lcom/alipay/euler/andfix/annotation/MethodReplace;
+        method = "onCreate"
+        clazz = "com.zlt.icode.LoginActivity"
+    .end annotation
 
     .prologue
     .line 41
@@ -338,6 +346,13 @@
     iput-object v0, p0, Lcom/zlt/icode/LoginActivity_CF;->noAccountLayout:Landroid/widget/LinearLayout;
 
     .line 47
+    iget-object v0, p0, Lcom/zlt/icode/LoginActivity_CF;->mainText:Landroid/widget/TextView;
+
+    const-string v1, "\u8fd9\u91cc\u7a7a\u7a7a\u5982\u4e5f"
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 48
     return-void
 .end method
 
@@ -350,14 +365,14 @@
 
     const/4 v4, 0x0
 
-    .line 108
+    .line 109
     const-string v2, "zlt"
 
     const-string v3, "Login OnCreateOptionsMenu"
 
     invoke-static {v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 110
+    .line 111
     invoke-virtual {p0}, Lcom/zlt/icode/LoginActivity_CF;->getMenuInflater()Landroid/view/MenuInflater;
 
     move-result-object v2
@@ -366,28 +381,28 @@
 
     invoke-virtual {v2, v3, p1}, Landroid/view/MenuInflater;->inflate(ILandroid/view/Menu;)V
 
-    .line 111
+    .line 112
     invoke-interface {p1, v4}, Landroid/view/Menu;->getItem(I)Landroid/view/MenuItem;
 
     move-result-object v2
 
     iput-object v2, p0, Lcom/zlt/icode/LoginActivity_CF;->mMenuItem:Landroid/view/MenuItem;
 
-    .line 112
+    .line 113
     iget-object v2, p0, Lcom/zlt/icode/LoginActivity_CF;->userId:Ljava/lang/String;
 
     if-nez v2, :cond_0
 
-    .line 113
+    .line 114
     iget-object v2, p0, Lcom/zlt/icode/LoginActivity_CF;->mMenuItem:Landroid/view/MenuItem;
 
     invoke-interface {v2, v4}, Landroid/view/MenuItem;->setVisible(Z)Landroid/view/MenuItem;
 
-    .line 116
+    .line 117
     :cond_0
     const/4 v1, 0x0
 
-    .line 118
+    .line 119
     .local v1, "versionStr":Ljava/lang/String;
     :try_start_0
     const-string v2, "\u7248\u672c\u66f4\u65b0(\u5f53\u524d%1$s)"
@@ -422,7 +437,7 @@
 
     move-result-object v1
 
-    .line 123
+    .line 124
     :goto_0
     invoke-interface {p1, v8}, Landroid/view/Menu;->getItem(I)Landroid/view/MenuItem;
 
@@ -430,14 +445,14 @@
 
     invoke-interface {v2, v1}, Landroid/view/MenuItem;->setTitle(Ljava/lang/CharSequence;)Landroid/view/MenuItem;
 
-    .line 124
+    .line 125
     return v8
 
-    .line 119
+    .line 120
     :catch_0
     move-exception v0
 
-    .line 121
+    .line 122
     .local v0, "e":Landroid/content/pm/PackageManager$NameNotFoundException;
     invoke-virtual {v0}, Landroid/content/pm/PackageManager$NameNotFoundException;->printStackTrace()V
 
@@ -451,31 +466,31 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 132
+    .line 133
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v0
 
-    .line 133
+    .line 134
     .local v0, "id":I
     const v2, 0x7f0c0098
 
     if-ne v0, v2, :cond_0
 
-    .line 134
+    .line 135
     invoke-direct {p0}, Lcom/zlt/icode/LoginActivity_CF;->showCustomDialog()V
 
-    .line 147
+    .line 148
     :goto_0
     return v1
 
-    .line 136
+    .line 137
     :cond_0
     const v2, 0x7f0c0099
 
     if-ne v0, v2, :cond_1
 
-    .line 137
+    .line 138
     invoke-static {p0}, Lcom/zlt/update/UpdateManager;->getInstance(Landroid/content/Context;)Lcom/zlt/update/UpdateManager;
 
     move-result-object v2
@@ -488,7 +503,7 @@
 
     goto :goto_0
 
-    .line 147
+    .line 148
     :cond_1
     invoke-super {p0, p1}, Lcom/zlt/icode/BaseActivity;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
 
@@ -501,17 +516,17 @@
     .locals 3
 
     .prologue
-    .line 52
+    .line 53
     invoke-super {p0}, Lcom/zlt/icode/BaseActivity;->onResume()V
 
-    .line 53
+    .line 54
     const-string v0, "zlt"
 
     const-string v1, "Login OnResume"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 55
+    .line 56
     iget-object v0, p0, Lcom/zlt/icode/LoginActivity_CF;->sharedPreferences:Landroid/content/SharedPreferences;
 
     const-string v1, "userId"
@@ -524,26 +539,26 @@
 
     iput-object v0, p0, Lcom/zlt/icode/LoginActivity_CF;->userId:Ljava/lang/String;
 
-    .line 57
+    .line 58
     iget-object v0, p0, Lcom/zlt/icode/LoginActivity_CF;->userId:Ljava/lang/String;
 
     if-eqz v0, :cond_0
 
-    .line 58
+    .line 59
     iget-object v0, p0, Lcom/zlt/icode/LoginActivity_CF;->accountLayout:Landroid/widget/LinearLayout;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 59
+    .line 60
     iget-object v0, p0, Lcom/zlt/icode/LoginActivity_CF;->noAccountLayout:Landroid/widget/LinearLayout;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 60
+    .line 61
     iget-object v0, p0, Lcom/zlt/icode/LoginActivity_CF;->mainText:Landroid/widget/TextView;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -574,19 +589,19 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 61
+    .line 62
     iget-object v0, p0, Lcom/zlt/icode/LoginActivity_CF;->mMenuItem:Landroid/view/MenuItem;
 
     if-eqz v0, :cond_0
 
-    .line 62
+    .line 63
     iget-object v0, p0, Lcom/zlt/icode/LoginActivity_CF;->mMenuItem:Landroid/view/MenuItem;
 
     const/4 v1, 0x1
 
     invoke-interface {v0, v1}, Landroid/view/MenuItem;->setVisible(Z)Landroid/view/MenuItem;
 
-    .line 67
+    .line 68
     :cond_0
     return-void
 .end method

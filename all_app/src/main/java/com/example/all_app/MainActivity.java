@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     private static final String TAG = "zlt";
     private List<AppInfo> appInfos = null;
-    private RecyclerView mRecyclerView = null;
+    private DragRecyclerView mRecyclerView = null;
     private RecyclerView.Adapter mAdapter = null;
 
     private Handler mHandle = new Handler();
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
         requestPermission();
         appInfos = new ArrayList<>();
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        mRecyclerView = (DragRecyclerView) findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter = new AppAdapter(this, this, appInfos));
         mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {

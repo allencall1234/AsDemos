@@ -21,7 +21,7 @@
         <activity
             android:name=".PreviewPhotoActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/ImageBrowserTheme"/>
+            android:theme="@style/ImageBrowserTheme" />
 
         <receiver android:name=".BootCompleteReceiver">
             <intent-filter>

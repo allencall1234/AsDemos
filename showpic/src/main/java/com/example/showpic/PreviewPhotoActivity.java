@@ -1,11 +1,11 @@
 package com.example.showpic;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
@@ -15,23 +15,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
+import android.view.animation.Interpolator;
 import android.widget.RelativeLayout;
+import android.widget.Scroller;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,22 +41,42 @@ import uk.co.senab.photoview.PhotoView;
 
 public class PreviewPhotoActivity extends FragmentActivity {
 
+    private static final int MSG_NEXT = 100;
+    private static final int MSG_DEFAULT_DURATION = 3 * 1000;
+
     private FixedViewPager mViewpager;
     private List<String> imageUrls;
     private ImagePagerAdapter mAdapter = null;
     private Context mContext;
+    private int curItemPosition;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient client;
     private GestureView mGestureView;
     private RelativeLayout rl_black_bg;
+
+    private Handler autoPlayHandle = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_NEXT:
+                    if (curItemPosition < imageUrls.size() - 1) {
+                        curItemPosition++;
+                        mViewpager.setCurrentItem(curItemPosition, true);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().setBackgroundDrawable(null);
         EventBus.getDefault().register(this);
         mContext = this;
@@ -69,9 +86,39 @@ public class PreviewPhotoActivity extends FragmentActivity {
         if (imageUrls == null) {
             imageUrls = new ArrayList<>();
         }
+
+        if (getIntent() != null) {
+            List<String> imagelist = getIntent().getStringArrayListExtra("imagelist");
+            if (imagelist != null) {
+                imageUrls.addAll(imagelist);
+            }
+        }
+
         mAdapter = new ImagePagerAdapter();
         mViewpager.setAdapter(mAdapter);
         mViewpager.setPageTransformer(false, TransitionHelper.cubeInTransformer());
+        setViewPagerScroller(mViewpager);
+        mViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                curItemPosition = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                Log.d("zlt","state = " + state);
+                if (state != ViewPager.SCROLL_STATE_IDLE) {
+                    autoPlayHandle.removeCallbacksAndMessages(null);
+                } else {
+                    autoPlayHandle.sendEmptyMessageDelayed(MSG_NEXT, MSG_DEFAULT_DURATION);
+                }
+            }
+        });
 
         rl_black_bg = (RelativeLayout) findViewById(R.id.rl_background);
 
@@ -99,6 +146,27 @@ public class PreviewPhotoActivity extends FragmentActivity {
                 rl_black_bg.setAlpha(1);
             }
         });
+
+        autoPlayHandle.sendEmptyMessageDelayed(MSG_NEXT, MSG_DEFAULT_DURATION);
+    }
+
+    private void setViewPagerScroller(ViewPager viewPager) {
+        try {
+            Field scrollerField = ViewPager.class.getDeclaredField("mScroller");
+            scrollerField.setAccessible(true);
+            Field interpolator = ViewPager.class.getDeclaredField("sInterpolator");
+            interpolator.setAccessible(true);
+
+            Scroller scroller = new Scroller(this, (Interpolator) interpolator.get(null)) {
+                @Override
+                public void startScroll(int startX, int startY, int dx, int dy, int duration) {
+                    super.startScroll(startX, startY, dx, dy, duration * 7);    // 这里是关键，将duration变长或变短
+                }
+            };
+            scrollerField.set(viewPager, scroller);
+        } catch (Exception e) {
+            // Do nothing.
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -109,6 +177,9 @@ public class PreviewPhotoActivity extends FragmentActivity {
         imageUrls.addAll(list);
         mAdapter.notifyDataSetChanged();
         mViewpager.setCurrentItem(0, true);
+        curItemPosition = 0;
+        autoPlayHandle.removeCallbacksAndMessages(null);
+        autoPlayHandle.sendEmptyMessageDelayed(MSG_NEXT, MSG_DEFAULT_DURATION);
     }
 
 
@@ -162,5 +233,6 @@ public class PreviewPhotoActivity extends FragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        autoPlayHandle.removeCallbacksAndMessages(null);
     }
 }

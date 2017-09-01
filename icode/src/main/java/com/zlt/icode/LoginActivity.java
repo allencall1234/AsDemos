@@ -44,6 +44,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         mainText = (TextView) findViewById(R.id.main_text);
         accountLayout = (LinearLayout) findViewById(R.id.account_layout);
         noAccountLayout = (LinearLayout) findViewById(R.id.no_account_layout);
+        mainText.setText("这里空空如也");
     }
 
     @Override
@@ -70,6 +71,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         switch (view.getId()) {
             case R.id.create_count:
                 startActivity(new Intent(LoginActivity.this, AccountActivity.class));
+//                finish();
                 break;
             case R.id.query_info:
                 startActivity(new Intent(LoginActivity.this, SearchActivity.class));

@@ -5,6 +5,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -16,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int MSG_CHECK = 100;
     private static final int MSG_CHECK_SUCCESS = 101;
+
+    private Button preview = null;
 
     private Handler handler = new Handler() {
         @Override
@@ -31,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     private ArrayList<String> sourceImageList;
+    private ArrayList<String> curImageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +65,26 @@ public class MainActivity extends AppCompatActivity {
         sourceImageList.add("http://7xi8d6.com1.z0.glb.clouddn.com/2017-04-16-17934400_1738549946443321_2924146161843437568_n.jpg");
         startActivity(new Intent(this, PreviewPhotoActivity.class));
         handler.sendEmptyMessage(MSG_CHECK);
+
+        curImageList = new ArrayList<>();
+
+        preview = (Button) findViewById(R.id.preview_btn);
+        preview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PreviewPhotoActivity.class);
+                intent.putStringArrayListExtra("imagelist", curImageList);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.et_input).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d("zlt", "hasFocus = " + hasFocus);
+            }
+        });
+
     }
 
     @Override
@@ -71,15 +97,15 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 Thread.sleep(500);
-                List<String> images = new ArrayList<>();
+                curImageList.clear();
                 for (String id : sourceImageList) {
                     int rands = (int) (Math.random() * 100);
                     if (rands % 3 == 0) {
-                        images.add(id);
+                        curImageList.add(id);
                     }
                 }
 
-                EventBus.getDefault().post(new ImageListMessage(images));
+                EventBus.getDefault().post(new ImageListMessage(curImageList));
                 handler.sendEmptyMessageDelayed(MSG_CHECK_SUCCESS, 60 * 1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();

@@ -20,6 +20,8 @@ public class FixedViewPager extends ViewPager {
         super(context, attrs);
     }
 
+    private boolean isTouch = false;
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         try {
@@ -43,10 +45,20 @@ public class FixedViewPager extends ViewPager {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         try {
+            if (ev.getAction() == MotionEvent.ACTION_MOVE) {
+                isTouch = true;
+            } else if (ev.getAction() == MotionEvent.ACTION_UP) {
+                isTouch = false;
+            }
             return super.onTouchEvent(ev);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
         return false;
     }
+
+    public boolean isTouching() {
+        return isTouch;
+    }
+
 }

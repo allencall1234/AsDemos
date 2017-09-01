@@ -81,10 +81,10 @@ public class UpdateManager {
                     break;
                 case MSG_DOWNLOAD_FIX_PATCH:
                     String name = mHashMap.get("patchname");
-//                    new DownloadThread(name).start();
+                    new DownloadThread(name, PATCH).start();
                     break;
                 case MSG_DOWNLOAD_FIX_PATCH_FINISH:
-                    String patchName = SAVE_PATH + File.separator + mHashMap.get("patchName");
+                    String patchName = SAVE_PATH + File.separator + mHashMap.get("patchname");
                     try {
                         Log.d("zlt", "patchName = " + patchName);
                         IcodeApplication.mPatchManager.addPatch(patchName);
@@ -162,6 +162,7 @@ public class UpdateManager {
     private void dismissDialog() {
         if (mDialog != null && mDialog.isShowing()) {
             mDialog.dismiss();
+            mDialog = null;
         }
     }
 
@@ -203,7 +204,7 @@ public class UpdateManager {
                         titleTextView.setText("正在下载更新版本...");
                         mProgressBar.setVisibility(View.VISIBLE);
                         loadingLayout.setVisibility(View.VISIBLE);
-                        new DownloadThread(mHashMap.get("name").toString()).start();// 开启下载线程
+                        new DownloadThread(mHashMap.get("name").toString(), APK).start();// 开启下载线程
                     }
                     // }
                 });
@@ -279,9 +280,11 @@ public class UpdateManager {
     class DownloadThread extends Thread {
 
         String fileName;
+        int mode;
 
-        DownloadThread(String fileName) {
+        DownloadThread(String fileName, int mode) {
             this.fileName = fileName;
+            this.mode = mode;
         }
 
         @Override
@@ -290,59 +293,65 @@ public class UpdateManager {
             InputStream is = null;
             try {
                 // 判断SD卡是否存在，并且是否具有读写权限
-                if (Environment.getExternalStorageState().equals(
-                        Environment.MEDIA_MOUNTED)) {
-                    // 获得存储卡的路径
-                    URL url = new URL(BASE_DOWN_URL + File.separator + fileName);
-                    // 创建连接
-                    HttpURLConnection conn = (HttpURLConnection) url
-                            .openConnection();
-                    conn.connect();
-                    // 获取文件大小
-                    int length = conn.getContentLength();
+//                String mountState = Environment.getExternalStorageState();
+//                if (mountState.equals(
+//                        Environment.MEDIA_MOUNTED)) {
+                // 获得存储卡的路径
+                URL url = new URL(BASE_DOWN_URL + File.separator + fileName);
+                // 创建连接
+                HttpURLConnection conn = (HttpURLConnection) url
+                        .openConnection();
+                conn.connect();
+                // 获取文件大小
+                int length = conn.getContentLength();
 
-                    // 创建输入流
-                    is = conn.getInputStream();
+                // 创建输入流
+                is = conn.getInputStream();
 
-                    File file = new File(SAVE_PATH);
-                    // 判断文件目录是否存在
-                    if (!file.exists()) {
-                        file.mkdir();
-                    }
-                    File apkFile = new File(SAVE_PATH, fileName);
-
-                    fos = new FileOutputStream(apkFile);
-                    int count = 0;
-                    // 缓存
-                    byte buf[] = new byte[1024];
-                    // 写入到文件中
-                    do {
-                        int numread = is.read(buf);
-                        count += numread;
-                        // 计算进度条位置
-                        progress = (int) (((float) count / length) * 100);
-                        // 更新进度
-                        if (MODE == APK) {
-                            Message message = new Message();
-                            message.what = MSG_PROGRESS;
-                            message.arg1 = length;
-                            message.arg2 = count;
-                            mHandler.sendMessage(message);
-                        }
-                        if (numread <= 0) {
-                            // 下载完成
-                            if (MODE == APK) {
-                                mHandler.sendEmptyMessage(MSG_FINISH);
-                            } else {
-                                mHandler.sendEmptyMessage(MSG_DOWNLOAD_FIX_PATCH_FINISH);
-                            }
-                            break;
-                        }
-                        // 写入文件
-                        fos.write(buf, 0, numread);
-                    } while (true);// 点击取消就停止下载.
+                File file = new File(SAVE_PATH);
+                // 判断文件目录是否存在
+                if (!file.exists()) {
+                    file.mkdir();
                 }
+                File apkFile = new File(SAVE_PATH, fileName);
+
+                fos = new FileOutputStream(apkFile);
+                int count = 0;
+                // 缓存
+                byte buf[] = new byte[1024];
+                // 写入到文件中
+                do {
+                    int numread = is.read(buf);
+                    count += numread;
+                    // 计算进度条位置
+                    progress = (int) (((float) count / length) * 100);
+                    // 更新进度
+                    if (mode == APK) {
+                        Message message = new Message();
+                        message.what = MSG_PROGRESS;
+                        message.arg1 = length;
+                        message.arg2 = count;
+                        mHandler.sendMessage(message);
+                    }
+                    if (numread <= 0) {
+                        // 下载完成
+                        if (mode == APK) {
+                            mHandler.sendEmptyMessage(MSG_FINISH);
+                        } else {
+                            mHandler.sendEmptyMessage(MSG_DOWNLOAD_FIX_PATCH_FINISH);
+                        }
+                        break;
+                    }
+                    // 写入文件
+                    fos.write(buf, 0, numread);
+                } while (true);// 点击取消就停止下载.
+//                }
             } catch (Exception e) {
+                if (mode == APK) {
+                    mHandler.sendEmptyMessage(MSG_FINISH);
+                } else {
+                    mHandler.sendEmptyMessage(MSG_DOWNLOAD_FIX_PATCH_FINISH);
+                }
                 e.printStackTrace();
             } finally {
                 if (is != null) {
@@ -368,7 +377,7 @@ public class UpdateManager {
      * 安装APK文件
      */
     private void installApk() {
-        File apkfile = new File(SAVE_PATH, "Icode.apk");
+        File apkfile = new File(SAVE_PATH, "ICode.apk");
         if (!apkfile.exists()) {
             return;
         }
