@@ -20,6 +20,7 @@
             android:name=".activity.RecyclerviewFocusActivity"
             android:configChanges="keyboardHidden|screenSize|orientation" />
         <activity android:name=".activity.DoubleRecyclerViewActivity" />
+        <activity android:name=".activity.StableEditTextActivity"/>
     </application>
 
 </manifest>
