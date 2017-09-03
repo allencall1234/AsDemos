@@ -117,6 +117,12 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public ViewHolder setTextSize(int viewId, float size) {
+        TextView view = getView(viewId);
+        view.setTextSize(size);
+        return this;
+    }
+
     public ViewHolder setTextColorRes(int viewId, int textColorRes) {
         TextView view = getView(viewId);
         view.setTextColor(mContext.getResources().getColor(textColorRes));

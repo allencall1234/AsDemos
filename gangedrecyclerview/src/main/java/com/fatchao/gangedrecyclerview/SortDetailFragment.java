@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SortDetailFragment extends BaseFragment<SortDetailPresenter, String> implements CheckListener {
+    private final static String TAG = "recyclerview";
     private RecyclerView mRv;
     private ClassifyDetailAdapter mAdapter;
     private GridLayoutManager mManager;
@@ -138,8 +139,7 @@ public class SortDetailFragment extends BaseFragment<SortDetailPresenter, String
     private void smoothMoveToPosition(int n) {
         int firstItem = mManager.findFirstVisibleItemPosition();
         int lastItem = mManager.findLastVisibleItemPosition();
-        Log.d("first--->", String.valueOf(firstItem));
-        Log.d("last--->", String.valueOf(lastItem));
+        Log.d(TAG, "smoothMoveToPosition: firstItem = " + firstItem + ",lastItem = " + lastItem);
         if (n <= firstItem) {
             mRv.scrollToPosition(n);
         } else if (n <= lastItem) {
@@ -168,7 +168,7 @@ public class SortDetailFragment extends BaseFragment<SortDetailPresenter, String
             if (move && newState == RecyclerView.SCROLL_STATE_IDLE) {
                 move = false;
                 int n = mIndex - mManager.findFirstVisibleItemPosition();
-                Log.d("n---->", String.valueOf(n));
+                Log.d(TAG, "onScrollStateChanged: pos = " + n);
                 if (0 <= n && n < mRv.getChildCount()) {
                     int top = mRv.getChildAt(n).getTop();
                     Log.d("top--->", String.valueOf(top));
@@ -180,6 +180,7 @@ public class SortDetailFragment extends BaseFragment<SortDetailPresenter, String
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
+            Log.d(TAG, "onScrolled:");
             if (move) {
                 move = false;
                 int n = mIndex - mManager.findFirstVisibleItemPosition();

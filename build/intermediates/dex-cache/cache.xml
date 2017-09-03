@@ -3,6 +3,15 @@
 
     <item
         is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support.constraint/constraint-layout/1.0.2/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support.constraint-constraint-layout-1.0.2_e8250c409913e25a8ac27f29d47e38095e69bedb.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/zlt/github/AsDemos/demos/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.3.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -48,6 +57,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/transition/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-transition-25.3.1_a0934baf261d8febce5868407b08dc8b6fc334e0.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/zlt/github/AsDemos/demos/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -66,21 +84,21 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.3.1_e09e24b0ecddba12677b5db61c150ef0b6c0c000.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/zlt/github/AsDemos/showpic/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.3.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
         sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
         <dex dex="/Users/zlt/github/AsDemos/showpic/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.3.1_c3e1e6dae16eddd93d449ff0fbefefd1e58052f9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/zlt/github/AsDemos/demos/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/zlt/github/AsDemos/demos/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.3.1_17222fff93173a7309c387ce5756e7e114b79303.jar" />
     </item>
     <item
         is-multidex="false"
@@ -93,6 +111,24 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/demos/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/zlt/github/AsDemos/demos/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.3.1_17222fff93173a7309c387ce5756e7e114b79303.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/support-fragment/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.3.1_54e86684e57253768a474c408b779c251e3eeb39.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/zlt/github/AsDemos/showpic/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -102,12 +138,39 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/support-compat/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.3.1_18aea297d33d94bc3555b1f29e3f8f12060baea7.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/zlt/github/AsDemos/showpic/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
         sha1="150252b33b00274cc868578ade018fda0d43a3eb">
         <dex dex="/Users/zlt/github/AsDemos/showpic/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.3.1_7b034944fde85004890b3263ede0454c4178e976.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/zlt/Downloads/adt-bundle-mac-x86_64-20131030/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_fee31096e421a6dfcece775d984e87ef59fda331.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.3.1_fc74d480532de15034651be850e7d64e28c0d8b1.jar" />
     </item>
     <item
         is-multidex="false"
@@ -126,6 +189,15 @@
         revision="25.0.1"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
         <dex dex="/Users/zlt/github/AsDemos/showpic/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.3.1_148d4adf1008cd892aeb2ced47efb0492a4226a6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.3.1_dc03d113bd23b98704ede2d5ebb8bbc70dd6733c.jar" />
     </item>
     <item
         is-multidex="false"
@@ -165,6 +237,33 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/design/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-design-25.3.1_356320d274cc08b01d243c49461829e657660fc7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/Android Studio.app/Contents/gradle/gradle-3.3/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/gson-2.7_b23f09bd944afc0dd5a8a7d7d323c3b36f2085bc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.3.1_f9a567e1ee9c8abbb3ada49a829b1bc0d2114323.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/zlt/github/AsDemos/showpic/build/intermediates/exploded-aar/com.android.support/support-fragment/25.3.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -192,6 +291,24 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-25.3.1_b8151a5d31b034e9aeaca41ac8658a28c6bcec3d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.3.1_85dfac92e836615f6bea94afc98f24595e6e3cfe.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/zlt/Downloads/adt-bundle-mac-x86_64-20131030/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
         jumboMode="false"
         optimize="true"
@@ -207,6 +324,24 @@
         revision="25.0.1"
         sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
         <dex dex="/Users/zlt/github/AsDemos/showpic/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.3.1_a63682a5ed9643cba173c49f6bb0a5aa47bbb195.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.3.1_e7b2bad98b4b98d3c7f515ba95a597af689f0125.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/Users/zlt/github/AsDemos/gangedrecyclerview/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.3.1_7c5272a60991e60813a162972d247022db118be4.jar" />
     </item>
     <item
         is-multidex="false"
