@@ -23,8 +23,8 @@ public abstract class RvCommonAdapter<T> extends MultiItemTypeAdapter<T> {
         mLayoutId = layoutId;
         mDatas = datas;
 
-        addItemViewDelegate(new ItemViewDelegate<T>() {
-            @Override
+            addItemViewDelegate(new ItemViewDelegate<T>() {
+                @Override
             public int getItemViewLayoutId() {
                 return layoutId;
             }

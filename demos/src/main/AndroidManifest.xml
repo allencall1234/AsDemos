@@ -21,6 +21,7 @@
             android:configChanges="keyboardHidden|screenSize|orientation" />
         <activity android:name=".activity.DoubleRecyclerViewActivity" />
         <activity android:name=".activity.StableEditTextActivity"/>
+        <activity android:name=".activity.SearchHistoryActivity"/>
     </application>
 
 </manifest>
