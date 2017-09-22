@@ -14,6 +14,7 @@ import com.example.demos.activity.DoubleRecyclerViewActivity;
 import com.example.demos.activity.ListviewFocusActivity;
 import com.example.demos.activity.RecyclerviewFocusActivity;
 import com.example.demos.activity.SearchHistoryActivity;
+import com.example.demos.activity.SmartTagFlowActivity;
 import com.example.demos.activity.StableEditTextActivity;
 
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         activities.add(new Item("双列表滑动测试", DoubleRecyclerViewActivity.class));
         activities.add(new Item("固定内容EditText", StableEditTextActivity.class));
         activities.add(new Item("限长搜索列表", SearchHistoryActivity.class));
+        activities.add(new Item("智能FlowLayout", SmartTagFlowActivity.class));
     }
 
 

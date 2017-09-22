@@ -1,14 +1,11 @@
 package com.zlt.icode;
 
-import java.io.IOException;
-
 import com.zlt.update.UpdateFailedListener;
 import com.zlt.update.UpdateManager;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;

@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
  */
 
 public class WrapLayout extends LinearLayout {
+    private static final String TAG = "WrapLayout";
     private View lChild;
     private View rChild;
     private Context context;
@@ -104,6 +105,9 @@ public class WrapLayout extends LinearLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, "onTouchEvent: ACTION_DOWN");
+                return false;
             case MotionEvent.ACTION_MOVE:
                 int deltX = (int) (event.getX() - lastX);
                 if (Math.abs(deltX) > touchSnap) {
@@ -117,6 +121,7 @@ public class WrapLayout extends LinearLayout {
                 }
                 break;
             case MotionEvent.ACTION_UP:
+                Log.d(TAG, "onTouchEvent: ACTION_UP");
             case MotionEvent.ACTION_CANCEL:
                 if (isSwap) {
                     autoDealingAction();
