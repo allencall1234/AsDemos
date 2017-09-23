@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.demos.R;
 import com.example.demos.widget.flowlayout.FlowLayout;
@@ -24,6 +26,9 @@ public class SmartTagFlowActivity extends FragmentActivity {
     private TagFlowLayout tagFlowLayout1 = null;
     private TagFlowLayout tagFlowLayout2 = null;
     private List<String> labels;
+    private Button refreshButton = null;
+    private TagAdapter<String> mAdapter1;
+    private TagAdapter<String> mAdapter2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,34 +64,62 @@ public class SmartTagFlowActivity extends FragmentActivity {
 
 
         tagFlowLayout1.enableSmartSort(false);
-        tagFlowLayout1.setAdapter(new TagAdapter<String>(labels) {
+        tagFlowLayout1.setAdapter(mAdapter1 = new TagAdapter<String>(labels) {
             @Override
-            public View getView(FlowLayout parent, int position, String o) {
+            public View getView(FlowLayout parent, int position, final String o) {
                 TextView tvTag = (TextView) LayoutInflater.from(SmartTagFlowActivity.this).inflate(R.layout.search_label_tv, parent, false);
                 tvTag.setText(o);
                 tvTag.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        showToast("click : " + o);
+                        labels.remove(o);
+                        mAdapter1.notifyDataChanged();
+                        mAdapter2.notifyDataChanged();
                     }
                 });
                 return tvTag;
             }
         });
 
-        tagFlowLayout2.setAdapter(new TagAdapter<String>(labels) {
+        tagFlowLayout2.setAdapter(mAdapter2 = new TagAdapter<String>(labels) {
             @Override
-            public View getView(FlowLayout parent, int position, String o) {
+            public View getView(FlowLayout parent, int position, final String o) {
                 TextView tvTag = (TextView) LayoutInflater.from(SmartTagFlowActivity.this).inflate(R.layout.search_label_tv, parent, false);
                 tvTag.setText(o);
                 tvTag.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        showToast("click : " + o);
+                        labels.remove(o);
+                        mAdapter1.notifyDataChanged();
+                        mAdapter2.notifyDataChanged();
                     }
                 });
                 return tvTag;
             }
         });
+
+        refreshButton = (Button) findViewById(R.id.refresh);
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (labels.size() > 0){
+                    labels.remove(0);
+                    mAdapter1.notifyDataChanged();
+                    mAdapter2.notifyDataChanged();
+                }
+            }
+        });
+    }
+
+    private Toast mToast;
+
+    public void showToast(String msg) {
+        if (mToast == null) {
+            mToast = Toast.makeText(SmartTagFlowActivity.this, msg, Toast.LENGTH_SHORT);
+        }
+        mToast.setText(msg);
+        mToast.show();
     }
 }

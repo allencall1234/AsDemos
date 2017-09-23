@@ -26,7 +26,7 @@ public class FlowLayout extends ViewGroup {
     private int mGravity;
     private List<View> lineViews = new ArrayList<>();
     private boolean isSmartSort = true;
-    private List<View> smartSortViews;
+    protected List<View> smartSortViews;
 
     public FlowLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -50,7 +50,7 @@ public class FlowLayout extends ViewGroup {
         int modeWidth = MeasureSpec.getMode(widthMeasureSpec);
         int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
         int modeHeight = MeasureSpec.getMode(heightMeasureSpec);
-        Log.d("zlt", "sizeHeight = " + sizeHeight + "," + this);
+        Log.d("zlt", "sizeHeight = " + sizeHeight );
         // wrap_content
         int width = 0;
         int height = 0;
@@ -96,7 +96,7 @@ public class FlowLayout extends ViewGroup {
         }
         int resultWidth = modeWidth == MeasureSpec.EXACTLY ? sizeWidth : width + getPaddingLeft() + getPaddingRight();
         int resultHeight = modeHeight == MeasureSpec.EXACTLY ? sizeHeight : height + getPaddingTop() + getPaddingBottom();
-        Log.d("zlt", "before : resultHeight = " + resultHeight + "," + this);
+        Log.d("zlt", "before : resultHeight = " + resultHeight);
         if (isSmartSort) {
             if (smartSortViews == null) {
                 smartSortViews = getSmartSortViews(resultWidth);
@@ -148,7 +148,7 @@ public class FlowLayout extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        Log.d("zltt", "onLyaout " + this);
+        Log.d("zltt", "onLyaout ");
         mAllViews.clear();
         mLineHeight.clear();
         mLineWidth.clear();
