@@ -20,8 +20,15 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import org.xutils.HttpManager;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
@@ -98,21 +105,28 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
             for (int i = 0; i < packageInfos.size(); i++) {
                 PackageInfo packageInfo = packageInfos.get(i);
                 //过滤掉系统app
+                //if ((ApplicationInfo.FLAG_SYSTEM & packageInfo.applicationInfo.flags) != 0) {
+                //   continue;
+                //}
                 if ((ApplicationInfo.FLAG_SYSTEM & packageInfo.applicationInfo.flags) != 0) {
-                    continue;
-                }
-                AppInfo myAppInfo = new AppInfo();
-                myAppInfo.setPackageName(packageInfo.packageName);
+                    AppInfo myAppInfo = new AppInfo();
+                    myAppInfo.setPackageName(packageInfo.packageName);
 //                if (packageInfo.applicationInfo.loadIcon(packageManager) == null) {
 //                    continue;
 //                }
-                myAppInfo.setLabel(packageInfo.applicationInfo.loadLabel(packageManager));
-                myAppInfo.setIcon(packageInfo.applicationInfo.loadIcon(packageManager));
-                myAppInfos.add(myAppInfo);
+                    myAppInfo.setLabel(packageInfo.applicationInfo.loadLabel(packageManager));
+                    myAppInfo.setIcon(packageInfo.applicationInfo.loadIcon(packageManager));
+                    myAppInfos.add(myAppInfo);
+                }
             }
-        } catch (Exception e) {
+        } catch (
+                Exception e
+                )
+
+        {
             Log.e(TAG, "===============获取应用包信息失败");
         }
+
         return myAppInfos;
     }
 
@@ -127,6 +141,9 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         public void run() {
             super.run();
             List<AppInfo> list = getAllPackages();
+
+            analysisApp(list);
+
             if (list != null) {
                 appInfos.clear();
                 appInfos.addAll(list);
@@ -138,6 +155,35 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 });
             }
         }
+    }
+
+    private void analysisApp(List<AppInfo> list) {
+        Map<String, Integer> maps = new HashMap<>();
+
+        for (AppInfo info : list) {
+            String[] vars = info.getPackageName().split("\\.");
+            for (String str : vars) {
+                Integer value = maps.get(str);
+                if (value != null) {
+                    maps.put(str, value + 1);
+                } else {
+                    maps.put(str, 1);
+                }
+            }
+        }
+
+        Iterator iterator = maps.keySet().iterator();
+        while (iterator.hasNext()){
+            String key = (String) iterator.next();
+            if (maps.get(key) <= 2){
+                iterator.remove();
+                maps.remove(key);
+            }
+        }
+
+        System.out.println("maps: " + maps.toString());
+        String log = new Gson().toJson(maps);
+        Log.d("zlt", "maps = " + maps);
     }
 
 }

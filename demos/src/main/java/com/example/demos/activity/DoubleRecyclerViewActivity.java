@@ -37,7 +37,7 @@ import java.util.Random;
  * Created by 524202 on 2017/9/1.
  */
 
-public class DoubleRecyclerViewActivity extends FragmentActivity implements ItemHeaderDecoration.CheckListener {
+public class DoubleRecyclerViewActivity extends FragmentActivity {
     private RecyclerView listView1;
     private RecyclerView listView2;
     private String[] titles = {"手机", "电脑", "电视", "家电", "路由", "智能", "电源", "耳机", "音响", "礼品", "生活", "其他", "其他", "其他", "其他"};
@@ -108,7 +108,12 @@ public class DoubleRecyclerViewActivity extends FragmentActivity implements Item
 
         mDecoration = new ItemHeaderDecoration(this, list2);
         listView2.addItemDecoration(mDecoration);
-        mDecoration.setCheckListener(this);
+        mDecoration.setCheckListener(new ItemHeaderDecoration.CheckListener() {
+            @Override
+            public void check(int position, boolean isScroll) {
+                check(position, isScroll);
+            }
+        });
         listView2.setAdapter(mAdapter = new GodsAdaper(this, list2));
 
         listView1.setLayoutManager(new LinearLayoutManager(this));
@@ -181,7 +186,6 @@ public class DoubleRecyclerViewActivity extends FragmentActivity implements Item
         }
     }
 
-    @Override
     public void check(int position, boolean isScroll) {
         if (move) {
             move = false;

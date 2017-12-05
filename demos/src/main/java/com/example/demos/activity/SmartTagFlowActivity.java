@@ -39,15 +39,15 @@ public class SmartTagFlowActivity extends FragmentActivity {
 
         labels = new ArrayList<>();
         labels.add("iphone");
-        labels.add("Apple");
-        labels.add("单反");
-        labels.add("小米游戏本");
-        labels.add("美图");
         labels.add("荣耀");
-        labels.add("vivo");
         labels.add("小米");
-        labels.add("小米鼠标");
-        labels.add("游戏本");
+        labels.add("苹果数据线");
+        labels.add("充电宝");
+        labels.add("耳机");
+        labels.add("华为");
+        labels.add("大闸蟹");
+        labels.add("月饼");
+        labels.add("白酒");
         labels.add("灵越");
         labels.add("拯救");
         labels.add("这个肯定上热搜新闻");

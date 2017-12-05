@@ -27,11 +27,13 @@ public class FlowLayout extends ViewGroup {
     private List<View> lineViews = new ArrayList<>();
     private boolean isSmartSort = true;
     protected List<View> smartSortViews;
+    private int linesCount = Integer.MAX_VALUE;
 
     public FlowLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TagFlowLayout);
         mGravity = ta.getInt(R.styleable.TagFlowLayout_gravity, LEFT);
+        linesCount = ta.getInt(R.styleable.TagFlowLayout_max_line, Integer.MAX_VALUE);
         ta.recycle();
     }
 
@@ -50,7 +52,7 @@ public class FlowLayout extends ViewGroup {
         int modeWidth = MeasureSpec.getMode(widthMeasureSpec);
         int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
         int modeHeight = MeasureSpec.getMode(heightMeasureSpec);
-        Log.d("zlt", "sizeHeight = " + sizeHeight );
+        Log.d("zlt", "sizeHeight = " + sizeHeight);
         // wrap_content
         int width = 0;
         int height = 0;
@@ -59,7 +61,7 @@ public class FlowLayout extends ViewGroup {
         int lineHeight = 0;
 
         int cCount = getChildCount();
-
+        int linesNum = 0;
         for (int i = 0; i < cCount; i++) {
             View child = getChildAt(i);
 
@@ -67,6 +69,7 @@ public class FlowLayout extends ViewGroup {
                 if (i == cCount - 1) {
                     width = Math.max(lineWidth, width);
                     height += lineHeight;
+                    linesNum++;
                 }
                 continue;
             }
@@ -85,6 +88,7 @@ public class FlowLayout extends ViewGroup {
                 lineWidth = childWidth;
                 height += lineHeight;
                 lineHeight = childHeight;
+                linesNum++;
             } else {
                 lineWidth += childWidth;
                 lineHeight = Math.max(lineHeight, childHeight);
@@ -92,6 +96,7 @@ public class FlowLayout extends ViewGroup {
             if (i == cCount - 1) {
                 width = Math.max(lineWidth, width);
                 height += lineHeight;
+                linesNum++;
             }
         }
         int resultWidth = modeWidth == MeasureSpec.EXACTLY ? sizeWidth : width + getPaddingLeft() + getPaddingRight();
@@ -105,6 +110,7 @@ public class FlowLayout extends ViewGroup {
             lineHeight = 0;
             lineWidth = 0;
             width = 0;
+            linesNum = 0;
             for (int i = 0; i < cCount; i++) {
                 View child = smartSortViews.get(i);
 
@@ -112,6 +118,7 @@ public class FlowLayout extends ViewGroup {
                     if (i == cCount - 1) {
                         width = Math.max(lineWidth, width);
                         height += lineHeight;
+                        linesNum++;
                     }
                     continue;
                 }
@@ -129,6 +136,7 @@ public class FlowLayout extends ViewGroup {
                     lineWidth = childWidth;
                     height += lineHeight;
                     lineHeight = childHeight;
+                    linesNum++;
                 } else {
                     lineWidth += childWidth;
                     lineHeight = Math.max(lineHeight, childHeight);
@@ -136,8 +144,14 @@ public class FlowLayout extends ViewGroup {
                 if (i == cCount - 1) {
                     width = Math.max(lineWidth, width);
                     height += lineHeight;
+                    linesNum++;
                 }
             }
+        }
+
+        if (linesNum > linesCount) {
+            int childH = height / linesNum;
+            height = childH * linesCount;
         }
 
         resultHeight = modeHeight == MeasureSpec.EXACTLY ? sizeHeight : height + getPaddingTop() + getPaddingBottom();
