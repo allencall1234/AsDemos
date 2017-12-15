@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+
+            <!-- 高度30   此处设置宽度无效-->
+            <size
+                android:width="@dimen/switch_width"
+                android:height="@dimen/switch_height" />
+            <!-- 圆角弧度 15 -->
+            <corners android:radius="@dimen/switch_radius" />
+
+
+            <!-- 变化率  定义从左到右的颜色不变 -->
+            <gradient
+                android:endColor="#00adb2"
+                android:startColor="#00adb2" />
+
+        </shape>
+    </item>
+    <item android:gravity="right"
+        android:width="@dimen/switch_height"
+        android:height="@dimen/switch_height">
+        <shape android:shape="rectangle">
+
+            <!-- 高度40 -->
+            <size
+                android:width="@dimen/switch_height"
+                android:height="@dimen/switch_height" />
+            <!-- 圆角弧度 20 -->
+            <corners android:radius="@dimen/switch_radius" />
+            <!-- 变化率 -->
+            <gradient
+                android:endColor="#ffffff"
+                android:startColor="#ffffff" />
+
+            <stroke
+                android:width="@dimen/switch_stroke_width"
+                android:color="#00adb2" />
+
+        </shape>
+    </item>
+</layer-list>

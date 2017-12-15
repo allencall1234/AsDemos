@@ -47,11 +47,13 @@
         <activity android:name=".activity.SmartTagFlowActivity" />
         <activity android:name=".activity.DynamicFragmentActivity" />
         <activity android:name=".activity.AmapLocationActivity" />
+        <activity android:name=".activity.IosSwitchTestActivity" />
+        <activity android:name=".activity.EmptyActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="91d14f2c5d181dcf2809dfe982ce4960"/>
-        <service android:name="com.amap.api.location.APSService"/>
+            android:value="91d14f2c5d181dcf2809dfe982ce4960" />
+        <service android:name="com.amap.api.location.APSService" />
 
     </application>
 

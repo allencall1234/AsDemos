@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <declare-styleable name="OutlineView">
+        <attr name="inner_color" format="color|reference"/>
+        <attr name="outline_color" format="color|reference"/>
+        <attr name="indicator_size" format="dimension"/>
+        <attr name="stroke_width" format="dimension"/>
+        <attr name="draw_inner_bg" format="boolean" />
+    </declare-styleable>
+
     <declare-styleable name="TagFlowLayout">
         <attr name="auto_select_effect" format="boolean"></attr>
         <attr name="max_select" format="integer"></attr>
-        <attr name="max_line" format="integer"/>
+        <attr name="max_line" format="integer" />
         <attr name="gravity">
             <enum name="left" value="-1" />
             <enum name="center" value="0" />
             <enum name="right" value="1" />
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="IosSwitch">
+        <attr name="sb_shadow_radius" format="reference|dimension" />
+        <attr name="sb_shadow_offset" format="reference|dimension" />
+        <attr name="sb_shadow_color" format="reference|color" />
+
+        <attr name="sb_border_width" format="reference|dimension" />
+        <attr name="sb_checkline_color" format="reference|color" />
+        <attr name="sb_checkline_width" format="reference|dimension" />
+        <attr name="sb_uncheckcircle_color" format="reference|color" />
+        <attr name="sb_uncheckcircle_width" format="reference|dimension" />
+        <attr name="sb_uncheckcircle_radius" format="reference|dimension" />
+
+        <attr name="toggle" format="reference|boolean" />
+        <attr name="sb_shadow_effect" format="reference|boolean" />
+        <attr name="sb_effect_duration" format="reference|integer" />
+        <attr name="sb_button_color" format="reference|color" />
+        <attr name="sb_show_indicator" format="reference|boolean" />
+
+        <attr name="sb_background" format="reference|color" />
+        <attr name="sb_checked_color" format="reference|color" />
+        <attr name="sb_uncheck_color" format="reference|color" />
+
+        <attr name="sb_enable_effect" format="reference|boolean" />
     </declare-styleable>
 </resources>

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.demos.activity.AmapLocationActivity;
 import com.example.demos.activity.DoubleRecyclerViewActivity;
 import com.example.demos.activity.DynamicFragmentActivity;
+import com.example.demos.activity.IosSwitchTestActivity;
 import com.example.demos.activity.ListviewFocusActivity;
 import com.example.demos.activity.RecyclerviewFocusActivity;
 import com.example.demos.activity.SearchHistoryActivity;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         activities.add(new Item("智能FlowLayout", SmartTagFlowActivity.class));
         activities.add(new Item("动态增添fragment", DynamicFragmentActivity.class));
         activities.add(new Item("高德地图定位", AmapLocationActivity.class));
+        activities.add(new Item("IosSwitch控件测试", IosSwitchTestActivity.class));
     }
 
 
