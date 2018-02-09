@@ -16,13 +16,14 @@ import android.widget.TextView;
 import com.example.demos.activity.AmapLocationActivity;
 import com.example.demos.activity.DoubleRecyclerViewActivity;
 import com.example.demos.activity.DynamicFragmentActivity;
+import com.example.demos.activity.HorizontalViewActivity;
 import com.example.demos.activity.IosSwitchTestActivity;
 import com.example.demos.activity.ListviewFocusActivity;
 import com.example.demos.activity.RecyclerviewFocusActivity;
 import com.example.demos.activity.SearchHistoryActivity;
+import com.example.demos.activity.ShellCmdActivity;
 import com.example.demos.activity.SmartTagFlowActivity;
 import com.example.demos.activity.StableEditTextActivity;
-import com.example.demos.fragment.DynamicFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         activities.add(new Item("动态增添fragment", DynamicFragmentActivity.class));
         activities.add(new Item("高德地图定位", AmapLocationActivity.class));
         activities.add(new Item("IosSwitch控件测试", IosSwitchTestActivity.class));
+        activities.add(new Item("横向RecyclerView测试", HorizontalViewActivity.class));
+        activities.add(new Item("java执行shell命令",ShellCmdActivity.class));
     }
 
 

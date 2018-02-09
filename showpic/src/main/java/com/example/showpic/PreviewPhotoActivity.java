@@ -95,6 +95,8 @@ public class PreviewPhotoActivity extends FragmentActivity {
         }
 
         mAdapter = new ImagePagerAdapter();
+        mViewpager.setPageMargin(10);
+        mViewpager.setOffscreenPageLimit(3);
         mViewpager.setAdapter(mAdapter);
         mViewpager.setPageTransformer(false, TransitionHelper.cubeInTransformer());
         setViewPagerScroller(mViewpager);

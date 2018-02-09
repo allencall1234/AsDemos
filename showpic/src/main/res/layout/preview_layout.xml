@@ -15,12 +15,15 @@
     <com.example.showpic.GestureView
         android:id="@+id/gestureview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipChildren="false">
 
         <com.example.showpic.FixedViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:layout_margin="40dp"/>
     </com.example.showpic.GestureView>
 
 </RelativeLayout>

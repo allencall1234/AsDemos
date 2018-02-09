@@ -49,6 +49,8 @@
         <activity android:name=".activity.AmapLocationActivity" />
         <activity android:name=".activity.IosSwitchTestActivity" />
         <activity android:name=".activity.EmptyActivity" />
+        <activity android:name=".activity.HorizontalViewActivity" />
+        <activity android:name=".activity.ShellCmdActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

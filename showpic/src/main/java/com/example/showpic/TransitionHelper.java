@@ -10,7 +10,7 @@ import android.view.View;
 
 public class TransitionHelper {
 
-    private static final float MIN_SCALE = 0.85f;
+    private static final float MIN_SCALE = 0.95f;
     private static final float MIN_ALPHA = 0.5f;
 
     public static ViewPager.PageTransformer cubeInTransformer() {

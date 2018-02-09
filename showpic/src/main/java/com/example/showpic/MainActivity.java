@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int MSG_CHECK = 100;
     private static final int MSG_CHECK_SUCCESS = 101;
 
-    private Button preview = null;
+    private View preview = null;
 
     private Handler handler = new Handler() {
         @Override
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         curImageList = new ArrayList<>();
 
-        preview = (Button) findViewById(R.id.preview_btn);
+        preview = findViewById(R.id.preview_btn);
         preview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -10,11 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.showpic.MainActivity">
 
-    <Button
+    <com.example.showpic.RoundRectTextView
         android:id="@+id/preview_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="预览图片" />
+        android:layout_height="50dp"
+        android:text="预览图片"
+        android:gravity="center"
+        android:background="#ffaaee"/>
 
     <EditText
         android:layout_below="@id/preview_btn"

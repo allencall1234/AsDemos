@@ -1,1 +1,2 @@
-include ':app', ':pulltorefresh', ':rxjava', ':all_app', ':showpic', ':icode', ':demos', ':gangedrecyclerview', ':mobiletest', ':funny'
+include ':app', ':pulltorefresh', ':rxjava', ':all_app', ':showpic', ':icode', ':demos', ':gangedrecyclerview', ':mobiletest', ':funny', ':sqlite_demo', ':whiteblackchess'
+include ':zhy_ormlite'
